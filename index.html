@@ -3,258 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZOZcafe</title>
+    <title>Inspired Webpage</title>
     <style>
+        :root {
+            --colorWhite: #fff;
+            --colorNeutralCool: #f3f1e7;
+            --colorGreenespressohouse: #144004;
+            --secondarycolorespressohouse: #853e04;
+            --colorBlack: #000;
+            --colorTextBackground: #d4e9e2;
+            --textSize2: 1.4rem;
+            --lineHeightNormal: 1.5;
+            --space-3: 1.6rem;
+            --space-6: 4rem;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: SoDoSans, Helvetica Neue, Helvetica, Arial, sans-serif;
+            background-color: var(--colorWhite);
+            color: var(--colorBlack);
+            font-size: var(--textSize2);
+            line-height: var(--lineHeightNormal);
         }
+
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background-color: #acb7c5;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: var(--space-3) var(--space-6);
+            background-color: var(--colorWhite);
+            color: var(--colorWhite);
+            position: relative;
         }
-        header img {
-            height: 50px;
-        }
-        .nav-left, .nav-right {
+
+        header .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
         }
-        .nav-left a, .nav-right a {
+
+        header .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: var(--space-3);
+        }
+
+        nav ul li a {
+            color: var(--colorGreenespressohouse);
             text-decoration: none;
-            color: white;
             font-weight: bold;
         }
-        .nav-right a {
-            border: 1px solid white;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        .nav-right button {
-            background-color: white;
-            color: #801f7b;
-            border: none;
-            padding: 5px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .hamburger {
+
+        .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
         }
-        .hamburger div {
+
+        .menu-toggle div {
             width: 25px;
             height: 3px;
-            background-color: #801f7b;
+            background-color: var(--colorGreenespressohouse);
             margin: 3px 0;
         }
-		.mobile-logo {
-            display: none;
-            height: 60px;
-            position: absolute;
-            top: 10px;
-            right: 10px
-		}
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            gap: 10px;
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: var(--colorGreenespressohouse);
+                text-align: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
         }
-        section.hero {
+
+        .hero {
+            background-image: url('https://cdn.sanity.io/images/6gp95ld1/productionv3/67eb861f813ef9b7a2fbae3b91d937ae28c95c15-2880x1360.jpg?w=1920&q=85&auto=format');
+            background-size: cover;
+            background-position: center;
+            height: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--colorWhite);
+            font-size: 3.6rem;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: var(--space-6);
+            text-align: center;
+        }
+
+        .content h1 {
+            font-size: 2.8rem;
+            color: var(--colorGreenespressohouse);
+        }
+
+        .content p {
+            font-size: 1.6rem;
+            margin: 2rem 0;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-6);
+            padding: 0;
+        }
+
+        .column {
             display: flex;
             align-items: stretch;
-            margin: .5 .5cm;
-            margin-bottom: 50px;
-            height: auto;
-        }
-        .hero-image, .hero-text {
-            flex: 1;
-	    display: flex;
-        }
-        .hero-image img {
-	    max-width: 100%;
-	    max-height: 100%;
-	    width: auto;
-	    height: auto;
-	    display: block;
-	    margin: auto;
-	}
-        .hero-text {
-            display: flex;
+            background-color: var(--colorNeutralCool);
+            border-radius: 12px;
+            overflow: hidden;
             flex-direction: column;
-            justify-content: center;
-            padding: 20px;
-            background-color: #b0003a;
-            color: white;
+            margin: 0;
+            width: 100%;
         }
-        .hero-text h1 {
-            font-size: 2.5rem;
-        }
-        .hero-text p {
-            margin: 20px 0;
-            font-size: 1.2rem;
-        }
-        .hero-text button {
-            background-color: white;
-            color: #b0003a;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        footer {
-            background-color: #f8f8f8;
-            padding: 10px 10px;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        footer h3 {
-            margin-top: 0;
-            color: #1e3932;
-            cursor: pointer;
-        }
-        footer ul {
-            list-style-type: none;
-            padding: 0;
-            display: none;
-        }
-        footer ul li {
-            margin: 5px 0;
-        }
-        footer ul li a {
-            text-decoration: none;
-            color: black;
-        }
-        .footer-section {
-            flex: 1;
-            min-width: 150px;
-            margin-right: 20px;
-        }
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
+
+        @media (min-width: 768px) {
+            .columns {
+                grid-template-columns: 1fr;
+                padding: var(--space-6);
             }
-            .nav-left, .nav-right {
-                display: none;
-                flex-direction: column;
+
+            .column {
+                flex-direction: row;
+            }
+
+            .column img {
+                flex: 1;
                 width: 100%;
-            }
-	    .nav-right a {
-		border: 1px white;
-		padding: 5px 10px;
-		border-radius: 5px;
-	    }
-            .hamburger {
-                display: flex;
-            }
-		.mobile-logo {
-                display: block; 
-            }
-            .mobile-menu {
-                display: flex;
-            }
-            section.hero {
-                flex-direction: column;
+                max-width: 50%;
                 height: auto;
+                object-fit: cover;
             }
-            footer {
-                flex-direction: column;
-                align-items: flex-start;
+
+            .column .text {
+                flex: 1;
+                max-width: 50%;
+                padding: var(--space-3);
+                background-color: var(--colorTextBackground);
+                color: var(--colorBlack);
+                box-sizing: border-box;
             }
-            footer ul {
-                display: none;
-            }
-            footer h3 {
-                margin-bottom: 10px;
-            }
-		}	
-		
-		#cookie-consent-banner {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-			width: 60%;
-            max-width: 400px;
+        }
+
+        .column img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .column .text {
+            width: 100%;
+            padding: var(--space-3);
+            background-color: var(--colorTextBackground);
+            color: var(--colorBlack);
+            box-sizing: border-box;
+        }
+
+        .column .text h2 {
+            margin: 0 0 10px;
+            font-size: 2rem;
+            color: var(--colorGreenespressohouse);
+        }
+
+        .column .text p {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .footer {
+            background-color: var(--colorBlack);
+            color: var(--colorWhite);
+            padding: var(--space-6);
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer a {
+            color: var(--colorGreenespressohouse);
+            text-decoration: none;
+        }
+        
+        .espressohouse-text {
+            text-transform: uppercase;
+            font-family: 'SoDo Sans Bold', Arial, sans-serif;
+            color: #853e04;
+        font-weight: bold;
+        }
+
+        /* Cookie Consent Styles */
+        #cookie-consent-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
         }
 
-        #cookie-consent-banner button {
-            margin: 5px;
-            padding: 10px 20px;
+        #cookie-consent-box {
+            background-color: var(--colorNeutralCool);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size:small;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+        }
+
+        #cookie-consent-box h2 {
+            color: var(--colorGreenespressohouse);
+            margin-bottom: 1rem;
+        }
+
+        #cookie-consent-box button {
+            background-color: var(--colorGreenespressohouse);
+            color: var(--colorWhite);
             border: none;
+            padding: 0.5rem 1rem;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem;
         }
 
-        #cookie-consent-banner .accept {
-            background-color: #801f7b;
-            color: white;
-        }
-
-        #cookie-consent-banner .reject {
-            background-color: #801f7b;
-            color: white;
-        }
-
-        #cookie-consent-banner .manage {
-            background-color: #801f7b;
-            color: white;
+        #cookie-consent-box a {
+            color: var(--colorGreenespressohouse);
+            text-decoration: none;
+            margin-left: 10px;
         }
 
         #preference-options {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            padding: 20px;
-            width: 60%;
-            max-width: 400px;
-            text-align: left;
             display: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
-        }
-
-        #preference-options h3 {
-            margin-top: 0;
+            margin-top: 1rem;
+            text-align: left;
         }
 
         #preference-options label {
             display: block;
-            margin: 10px 0;
+            margin-bottom: 0.5rem;
         }
 
-        #preference-options button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            background-color: #801f7b;
-            color: white;
-            cursor: pointer;
-        }
-		
-		/* Fade-out Animation */
+        /* Fade-out Animation */
         .fade-out {
             animation: fadeOut 1s forwards;
         }
@@ -268,205 +299,186 @@
                 visibility: hidden;
             }
         }
+
     </style>
 </head>
 <body>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "pkr9bxj0q9");
-</script>
-	<!-- Header -->
+    <div id="cookie-consent-banner">
+        <div id="cookie-consent-box">
+            <h2>Sana Özel Bir Deneyim</h2>
+            <div id="preference-options">
+                <label><input type="checkbox" id="performance-cookies"> Performance Cookies</label>
+                <label><input type="checkbox" id="strictly-necessary-cookies" checked disabled> Strictly Necessary Cookies</label>
+                <label><input type="checkbox" id="targeting-cookies"> Targeting Cookies</label>
+                <button id="save-preferences">Save Preferences</button>
+            </div>
+            <p id="cookie-options-text"><span class="espressohouse-text">Espresso house</span> olarak, güvenilir ve gelişmiş bir alışveriş deneyimi sunmak amacıyla çerez kullanıyoruz. Tümünü Reddet seçeneğine tıklaman halinde tercih ve ilgi alanlarına yönelik maalesef sana özel bir deneyim sunamayacağız. "Seçenekleri Yönet" öğesine tıklayarak çerezlere ilişkin onay ayarlarını değiştirebilirsin. Çerezler vasıtasıyla hangi kişisel verileri topladığımız ve nasıl kullandığımız hakkında aydınlatma metnine buradan ulaşabilirsin.</p>
+            <div id="cookie-buttons">
+                <button id="accept-cookies">Accept</button>
+                <button id="reject-cookies">Reject</button>
+                <button id="manage-preferences">Manage My Preferences</button>
+            </div>
+        </div>
+    </div>
+
     <header>
-        <div class="nav-left">
-            <a href="#">Menu</a>
-            <a href="#">Rewards</a>
-            <a href="#">Gift Cards</a>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/en/3/33/Espresso_House_logo.svg" alt="espressohouse Logo">
         </div>
-		<div class="nav-right">
-            <a href="#">Find a Store</a>
-            <a href="#">Sign In</a>
-            <button>Join Now</button>
-        </div>
-		<img class="mobile-logo" src="https://github.com/Aysaryahya11/ZOZcafe/blob/main/ZOZ%20Cafe%20logo.png?raw=true" alt="Mobile Logo">
-		</div>
-		<div class="hamburger" onclick="toggleMenu()">
+        <div class="menu-toggle" id="menu-toggle">
             <div></div>
-			<div></div>
-			<div></div>
-		<div>
+            <div></div>
+            <div></div>
+        </div>
+        <nav id="nav">
+            <ul>
+                <li><a href="#">Kahveler</a></li>
+                <li><a href="#">Mağazalar</a></li>
+                <li><a href="#">Hakkımızda</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Hero Sections -->
-    <section class="hero">
-        <div class="hero-image">
-            <img src="https://github.com/Aysaryahya11/ZOZcafe/blob/main/zoz1.png?raw=true" alt="Gift Card Design">
-        </div>
-        <div class="hero-text">
-            <h1>Merry Last-Minute Gifts</h1>
-            <p>There's still time to send a holiday eGift. Choose your favorite design and share some joy via text, social media, or email.</p>
-            <button>Send an eGift</button>
-        </div>
-    </section>
+    <div class="hero">
+        Welcome to Our Website
+    </div>
 
-    <section class="hero">
-        <div class="hero-image">
-            <img src="https://github.com/Aysaryahya11/ZOZcafe/blob/main/zoz2.png?raw=true" alt="Seasonal Drinks">
-        </div>
-        <div class="hero-text">
-            <h1>Warm Up This Winter</h1>
-            <p>Discover our seasonal drinks, crafted to bring warmth and joy to your holidays. Available for a limited time.</p>
-            <button>Explore Drinks</button>
-        </div>
-    </section>
+    <div class="content">
+        <h1>Discover Our Offerings</h1>
+        <p>We provide high-quality products and services designed to delight you. Explore our menu and find your favorites!</p>
+    </div>
 
-    <section class="hero">
-        <div class="hero-image">
-            <img src="https://github.com/Aysaryahya11/ZOZcafe/blob/main/zoz3(1).png?raw=true" alt="Coffee Beans">
+    <div class="columns">
+        <div class="column">
+            <img src="https://cdn.sanity.io/images/6gp95ld1/productionv3/835bd5bdc814df1ab1e6e59d0b510bcd6efafb50-560x420.jpg?rect=122,0,315,420&w=640&h=853&q=85&fit=min&auto=format" alt="Reward Tiers">
+            <div class="text">
+                <h2>Column 1</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
         </div>
-        <div class="hero-text">
-            <h1>Exceptional Coffee</h1>
-            <p>From bean to cup, experience coffee perfection with our expertly sourced and roasted beans.</p>
-            <button>Shop Coffee</button>
+        <div class="column">
+            <img src="https://cdn.sanity.io/images/6gp95ld1/productionv3/5d6444fd05ac6b31419c316dba2562ba14aa1270-560x420.jpg?w=750&q=85&auto=format" alt="Rewards Details">
+            <div class="text">
+                <h2>Column 2</h2>
+                <p>Quisque sit amet est et sapien ullamcorper pharetra.</p>
+            </div>
         </div>
-    </section>
+        <div class="column">
+            <img src="https://cdn.sanity.io/images/6gp95ld1/productionv3/80df8b8bd8f32c1aeeb49edacc103853e7559d85-1120x816.jpg?w=750&q=85&auto=format" alt="Rewards Card">
+            <div class="text">
+                <h2>Column 3</h2>
+                <p>Vestibulum volutpat pretium libero, ut cursus arcu.</p>
+            </div>
+        </div>
+        <div class="column">
+            <img src="https://espressohouse.com/_ipx/w_750,q_75/https%3A%2F%2Fpim-espressohouse.azureedge.net%2FProducts%2FLTO%2F2024%2FBLOCK%25204%2FDaily%2520Christmas%2520Offers%25202024%2FBLOCK4_2024_PREORDER_BUNDLES_MONDAY_SE_NO_DE.png?url=https%3A%2F%2Fpim-espressohouse.azureedge.net%2FProducts%2FLTO%2F2024%2FBLOCK%25204%2FDaily%2520Christmas%2520Offers%25202024%2FBLOCK4_2024_PREORDER_BUNDLES_MONDAY_SE_NO_DE.png&w=750&q=75" alt="Bonus Stars">
+            <div class="text">
+                <h2>Column 4</h2>
+                <p>Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
+            </div>
+        </div>
+    </div>
 
-    <section class="hero">
-        <div class="hero-image">
-            <img src="https://github.com/Aysaryahya11/ZOZcafe/blob/main/zoz4.png?raw=true" alt="Community">
-        </div>
-        <div class="hero-text">
-            <h1>Giving Back</h1>
-            <p>We believe in making a difference in our communities. Learn about our initiatives and how you can help.</p>
-            <button>Learn More</button>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-section">
-            <h3 onclick="toggleDropdown(this)">About Us</h3>
-            <ul>
-                <li><a href="#">Our Company</a></li>
-                <li><a href="#">Our Coffee</a></li>
-                <li><a href="#">Stories and News</a></li>
-                <li><a href="#">Investor Relations</a></li>
-                <li><a href="#">Customer Service</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3 onclick="toggleDropdown(this)">Careers</h3>
-            <ul>
-                <li><a href="#">Culture and Values</a></li>
-                <li><a href="#">Inclusion and Diversity</a></li>
-                <li><a href="#">Corporate Careers</a></li>
-                <li><a href="#">Retail Careers</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3 onclick="toggleDropdown(this)">Social Impact</h3>
-            <ul>
-                <li><a href="#">Ethical Sourcing</a></li>
-                <li><a href="#">Environment</a></li>
-                <li><a href="#">Community</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3 onclick="toggleDropdown(this)">Quick Links</h3>
-            <ul>
-                <li><a href="#">Gift Cards</a></li>
-                <li><a href="#">Store Locator</a></li>
-                <li><a href="#">FAQs</a></li>
-            </ul>
-        </div>
+    <footer class="footer">
+        <p>&copy; 2024 My Inspired Website. All rights reserved. <a href="#">Privacy Policy</a></p>
     </footer>
-	
-	<!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner">
-        <p>We use cookies to enhance your experience. Please select your preference:</p>
-        <button class="accept">Accept All</button>
-        <button class="reject">Reject All</button>
-        <button class="manage">Manage My Preferences</button>
-    </div>
 
-    <!-- Cookie Preferences Modal -->
-    <div id="preference-options">
-        <h3>Manage Your Cookie Preferences</h3>
-        <label>
-            <input type="checkbox" checked disabled>
-            Necessary Cookies (required)
-        </label>
-        <label>
-            <input type="checkbox" id="performance-cookies">
-            Performance Cookies
-        </label>
-        <label>
-            <input type="checkbox" id="targeting-cookies">
-            Targeting Cookies
-        </label>
-        <button id="save-preferences">Save Preferences</button>
-    </div>
 
-    <script>
-        function toggleMenu() {
-            document.querySelector('.nav-left').classList.toggle('mobile-menu');
-            document.querySelector('.nav-right').classList.toggle('mobile-menu');
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const cookieConsentBanner = document.getElementById("cookie-consent-banner");
+    const acceptCookiesButton = document.getElementById("accept-cookies");
+    const rejectCookiesButton = document.getElementById("reject-cookies");
+    const managePreferencesButton = document.getElementById("manage-preferences");
+    const savePreferencesButton = document.getElementById("save-preferences");
+    const cookieOptionsText = document.getElementById("cookie-options-text");
+    const cookieButtons = document.getElementById("cookie-buttons");
+    const preferenceOptions = document.getElementById("preference-options");
+
+    // Function to send data to Qualtrics using multiple methods
+    function sendToQualtrics(choice) {
+        // Method 1: Direct parent window communication
+        if (window.parent) {
+            try {
+                window.parent.postMessage({
+                    action: 'setCookieChoice',
+                    choice: choice
+                }, '*');
+                console.log('Sent choice via postMessage:', choice);
+            } catch (error) {
+                console.error('Error sending via postMessage:', error);
+            }
         }
 
-        function toggleDropdown(element) {
-            const ul = element.nextElementSibling;
-            ul.style.display = ul.style.display === 'block' ? 'none' : 'block';
+        // Method 2: URL Parameter Update
+        try {
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('cookieChoice', choice);
+            window.history.replaceState({}, '', currentUrl);
+            console.log('Updated URL with choice:', choice);
+        } catch (error) {
+            console.error('Error updating URL:', error);
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const banner = document.getElementById('cookie-consent-banner');
-            const preferences = document.getElementById('preference-options');
-            const acceptBtn = document.querySelector('.accept');
-            const rejectBtn = document.querySelector('.reject');
-            const manageBtn = document.querySelector('.manage');
-            const saveBtn = document.getElementById('save-preferences');
-            const performanceCheckbox = document.getElementById('performance-cookies');
-            const targetingCheckbox = document.getElementById('targeting-cookies');
+        // Method 3: Local Storage (as backup)
+        try {
+            localStorage.setItem('cookieChoice', choice);
+            console.log('Saved choice to localStorage:', choice);
+        } catch (error) {
+            console.error('Error saving to localStorage:', error);
+        }
+    }
 
-            // Accept All Cookies
-            acceptBtn.addEventListener('click', () => {
-                localStorage.setItem('cookiePreferences', JSON.stringify({
-                    necessary: true,
-                    performance: true,
-                    targeting: true
-                }));
-                banner.style.display = 'none';
-            });
+    // Function to hide the banner
+    function hideBanner() {
+        cookieConsentBanner.classList.add('fade-out');
+        setTimeout(() => {
+            cookieConsentBanner.style.display = 'none';
+        }, 1000);
+    }
 
-            // Reject All Cookies
-            rejectBtn.addEventListener('click', () => {
-                localStorage.setItem('cookiePreferences', JSON.stringify({
-                    necessary: true,
-                    performance: false,
-                    targeting: false
-                }));
-                banner.style.display = 'none';
-            });
+    // Event Listeners for the buttons
+    acceptCookiesButton.addEventListener('click', () => {
+        sendToQualtrics('Accept');
+        hideBanner();
+    });
 
-            // Manage Preferences
-            manageBtn.addEventListener('click', () => {
-                banner.style.display = 'none';
-                preferences.style.display = 'block';
-            });
+    rejectCookiesButton.addEventListener('click', () => {
+        sendToQualtrics('Reject');
+        hideBanner();
+    });
 
-            // Save Preferences
-            saveBtn.addEventListener('click', () => {
-                const preferencesData = {
-                    necessary: true,
-                    performance: performanceCheckbox.checked,
-                    targeting: targetingCheckbox.checked
-                };
-                localStorage.setItem('cookiePreferences', JSON.stringify(preferencesData));
-                preferences.style.display = 'none';
-            });
-	});
+    // Show preference options when "Manage My Preferences" is clicked
+    managePreferencesButton.addEventListener('click', () => {
+        cookieOptionsText.style.display = "none";
+        cookieButtons.style.display = "none";
+        preferenceOptions.style.display = "block";
+        // Note: We don't send data to Qualtrics yet, as the user hasn't made their final choice
+    });
+
+    // Handle saving preferences
+    savePreferencesButton.addEventListener('click', () => {
+        // Get the state of preference checkboxes
+        const performanceCookies = document.getElementById('performance-cookies').checked;
+        const targetingCookies = document.getElementById('targeting-cookies').checked;
+        
+        // Create a detailed preferences string
+        let preferences = [];
+        if (performanceCookies) preferences.push("Performance");
+        // Always include Strictly as it's mandatory
+        preferences.push("Strictly");
+        if (targetingCookies) preferences.push("Targeting");
+        
+        // Send the preferences to Qualtrics
+        const choiceString = preferences.length > 0 ? preferences.join(", ") : "None";
+        sendToQualtrics(choiceString);
+        
+        // Hide the banner
+        hideBanner();
+    });
+});
 </script>
+
 </body>
 </html>
